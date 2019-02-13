@@ -7,6 +7,10 @@ export BERT_BASE_DIR=/data/bert/cased_L-12_H-768_A-12
 export MCQA_DIR=/data/ARCQC/
 export BERT_OUTPUT_DIR=/data/bert_out/
 
+export TRAIN_FILENAME=train.tsv
+export DEV_FILENAME=dev.tsv
+export TEST_FILENAME=test.tsv
+
 rm -r $BERT_OUTPUT_DIR
 mkdir $BERT_OUTPUT_DIR
 mkdir $BERT_OUTPUT_DIR/dev
@@ -25,7 +29,8 @@ python run_classifier2.py \
   --train_batch_size=32 \
   --learning_rate=2e-5 \
   --num_train_epochs=3.0 \
-  --output_dir=$BERT_OUTPUT_DIR
+  --output_dir=$BERT_OUTPUT_DIR \
+  --train_filename=$TRAIN_FILENAME
 
 python run_classifier2.py \
   --task_name=MCQA \
@@ -35,4 +40,17 @@ python run_classifier2.py \
   --bert_config_file=$BERT_BASE_DIR/bert_config.json \
   --init_checkpoint=$BERT_OUTPUT_DIR \
   --max_seq_length=128 \
-  --output_dir=$BERT_OUTPUT_DIR/test
+  --output_dir=$BERT_OUTPUT_DIR/dev \
+  --eval_filename=$DEV_FILENAME
+
+python run_classifier2.py \
+  --task_name=MCQA \
+  --do_predict=true \
+  --data_dir=$MCQA_DIR \
+  --vocab_file=$BERT_BASE_DIR/vocab.txt \
+  --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+  --init_checkpoint=$BERT_OUTPUT_DIR \
+  --max_seq_length=128 \
+  --output_dir=$BERT_OUTPUT_DIR/test \
+  --eval_filename=$TEST_FILENAME
+

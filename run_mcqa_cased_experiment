@@ -1,0 +1,86 @@
+#!/bin/bash
+
+
+# Example
+# run_mcqa_cased_experiment -runs 3 -mcqadir /data/ARCQC/ -train QC-ARC-All-Train.harish.bert.L6.tsv -dev QC-ARC-All-Dev.harish.bertL6.tsv -test QC-ARC-All-Test.harish.bertL6.tsv -outdir /data/bertoutL6/
+# run_mcqa_cased_experiment -r 3 -p /data/ARCQC/ -t QC-ARC-All-Train.harish.bert.L6.tsv -d QC-ARC-All-Dev.harish.bertL6.tsv -e QC-ARC-All-Test.harish.bertL6.tsv -o /data/bertoutL6/
+# run_mcqa_cased_experiment 3 /data/ARCQC/ QC-ARC-All-Train.harish.bert.L6.tsv QC-ARC-All-Dev.harish.bertL6.tsv QC-ARC-All-Test.harish.bertL6.tsv /data/bertoutL6/
+
+
+NUM_RUNS="$1"
+MCQA_DIR="$2"
+TRAIN_FILENAME="$3"
+DEV_FILENAME="$4"
+TEST_FILENAME="$5"
+BASE_OUTPUT_PATH="$6"
+
+
+echo numRuns: $NUM_RUNS
+
+#exit 1
+
+for (( counter=1; counter<=$NUM_RUNS; counter++ )) do
+    echo Starting run $counter .        
+
+    export BERT_BASE_DIR=/data/bert/cased_L-12_H-768_A-12
+    #export BERT_BASE_DIR=/data/bert/uncased_L-12_H-768_A-12
+    #export BERT_BASE_DIR=/data/bert/uncased_L-24_H-1024_A-16
+    #export GLUE_DIR=/data/glue/glue_data
+    ##export MCQA_DIR=/data/ARCQC/
+    
+    #export BERT_OUTPUT_DIR=/data/bert_out/
+    export BERT_OUTPUT_DIR=$BASE_OUTPUT_PATH/run$counter/
+
+    # Populuated from command line arguments
+    ##export TRAIN_FILENAME=train.tsv
+    ##export DEV_FILENAME=dev.tsv
+    ##export TEST_FILENAME=test.tsv
+
+    #rm -r $BERT_OUTPUT_DIR
+    mkdir $BASE_OUTPUT_PATH
+    mkdir $BERT_OUTPUT_DIR
+    mkdir $BERT_OUTPUT_DIR/dev
+    mkdir $BERT_OUTPUT_DIR/test
+
+    python run_classifier2.py \
+        --task_name=MCQA \
+        --do_train=true \
+        --do_eval=true \
+        --do_lower_case=False \
+        --data_dir=$MCQA_DIR \
+        --vocab_file=$BERT_BASE_DIR/vocab.txt \
+        --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+        --init_checkpoint=$BERT_BASE_DIR/bert_model.ckpt \
+        --max_seq_length=128 \
+        --train_batch_size=32 \
+        --learning_rate=2e-5 \
+        --num_train_epochs=3.0 \
+        --output_dir=$BERT_OUTPUT_DIR \
+        --train_filename=$TRAIN_FILENAME
+
+    python run_classifier2.py \
+        --task_name=MCQA \
+        --do_predict=true \
+        --data_dir=$MCQA_DIR \
+        --vocab_file=$BERT_BASE_DIR/vocab.txt \
+        --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+        --init_checkpoint=$BERT_OUTPUT_DIR \
+        --max_seq_length=128 \
+        --output_dir=$BERT_OUTPUT_DIR/dev \
+        --eval_filename=$DEV_FILENAME
+
+    python run_classifier2.py \
+        --task_name=MCQA \
+        --do_predict=true \
+        --data_dir=$MCQA_DIR \
+        --vocab_file=$BERT_BASE_DIR/vocab.txt \
+        --bert_config_file=$BERT_BASE_DIR/bert_config.json \
+        --init_checkpoint=$BERT_OUTPUT_DIR \
+        --max_seq_length=128 \
+        --output_dir=$BERT_OUTPUT_DIR/test \
+        --eval_filename=$TEST_FILENAME
+
+    echo run $counter completed.
+    $counter += 1
+done
+echo runs completed.

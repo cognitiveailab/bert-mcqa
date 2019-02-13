@@ -55,6 +55,15 @@ flags.DEFINE_string(
     "output_dir", None,
     "The output directory where the model checkpoints will be written.")
 
+## New evaluation parameters
+flags.DEFINE_string(
+    "train_filename", None,
+    "The filename of the TSV file to use for training (in the data directory).")
+
+flags.DEFINE_string(
+    "eval_filename", None,
+    "The filename of the TSV file to evaluate (in the data directory).")
+
 ## Other parameters
 
 flags.DEFINE_string(
@@ -342,24 +351,24 @@ class MrpcProcessor(DataProcessor):
 class McqaProcessor(DataProcessor):
   """Processor for the Multiple Choice Question Answering data set (modified from MRPC processor)."""
 
-  def get_train_examples(self, data_dir):
+  def get_train_examples(self, data_dir, filename):
     """See base class."""
     return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
+        self._read_tsv(os.path.join(data_dir, filename)), "train")
 
   def get_dev_examples(self, data_dir):
     """See base class."""
     return self._create_examples(
         self._read_tsv(os.path.join(data_dir, "dev.tsv")), "dev")
 
-  def get_test_examples(self, data_dir):
+  def get_test_examples(self, data_dir, filename):
     """See base class."""
     return self._create_examples(
-        self._read_tsv(os.path.join(data_dir, "test.tsv")), "test")
+        self._read_tsv(os.path.join(data_dir, filename)), "test")
 
-  def get_gold_eval(self, data_dir):
+  def get_gold_eval(self, data_dir, filename):
       return self.load_gold_eval(
-          self._read_tsv(os.path.join(data_dir, "test.tsv")) )
+          self._read_tsv(os.path.join(data_dir, filename)) )
 
   def get_labels(self):
     """See base class."""
@@ -988,7 +997,12 @@ def main(_):
   # Training procedure
   #
   if FLAGS.do_train:
-    train_examples = processor.get_train_examples(FLAGS.data_dir)
+    if (FLAGS.train_filename == None):
+        raise ValueError(
+            "'train_filename' must be specified with `do_train'.")
+
+
+    train_examples = processor.get_train_examples(FLAGS.data_dir, FLAGS.train_filename)
     num_train_steps = int(
         len(train_examples) / FLAGS.train_batch_size * FLAGS.num_train_epochs)
     num_warmup_steps = int(num_train_steps * FLAGS.warmup_proportion)
@@ -1086,14 +1100,17 @@ def main(_):
   # Test procedure
   #
   if FLAGS.do_predict:
+    if (FLAGS.eval_filename == None):
+        raise ValueError(
+            "'eval_filename' must be specified with `do_predict'.")
 
     # Load test data
-    predict_examples = processor.get_test_examples(FLAGS.data_dir)
+    predict_examples = processor.get_test_examples(FLAGS.data_dir, FLAGS.eval_filename)
     # Get number of elements in the test data
     num_actual_predict_examples = len(predict_examples)
 
     # Load gold information about questions
-    goldQuestions = processor.get_gold_eval(FLAGS.data_dir)
+    goldQuestions = processor.get_gold_eval(FLAGS.data_dir, FLAGS.eval_filename)
 
 
     ### debug
@@ -1224,13 +1241,17 @@ def main(_):
 
 
       # Write summary
+      writer.write("data_dir: " + str(FLAGS.data_dir) + "\n")
+      writer.write("eval_filename: " + str(FLAGS.eval_filename) + "\n")
       writer.write("numQuestions: " + str(numQuestions) + "\n")
       writer.write("numQuestionsCorrect: " + str(numQuestionsCorrect) + "\n")
       writer.write("Proportion: " + str(numQuestionsCorrect / numQuestions) + "\n")
 
-      print("numQuestions: " + str(numQuestions) + "\n")
-      print("numQuestionsCorrect: " + str(numQuestionsCorrect) + "\n")
-      print("Proportion: " + str(numQuestionsCorrect / numQuestions) + "\n")
+      writer.write("data_dir: " + str(FLAGS.data_dir) )
+      writer.write("eval_filename: " + str(FLAGS.eval_filename))
+      print("numQuestions: " + str(numQuestions) )
+      print("numQuestionsCorrect: " + str(numQuestionsCorrect) )
+      print("Proportion: " + str(numQuestionsCorrect / numQuestions) )
 
     # Check -- ensure that the number of written lines is the same as the number of elements in the test set.
     assert num_written_lines == num_actual_predict_examples
