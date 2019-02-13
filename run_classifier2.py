@@ -27,6 +27,7 @@ import tokenization
 import tensorflow as tf
 from collections import defaultdict
 from operator import itemgetter
+import sys
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -450,9 +451,13 @@ class McqaProcessor(DataProcessor):
           # new question, push old question
           if (question["questionid"] != ""):
               out.append(question)
+              #print(dict(question))
+              #print("")
+
           # Clear
           question = defaultdict(lambda: "")
           question["startline"] = i-1
+
 
 
       # Populate fields in question structure
@@ -465,6 +470,7 @@ class McqaProcessor(DataProcessor):
 
     # Add final question at the end of the list
     out.append(question)
+
 
     return out
 
@@ -1178,7 +1184,7 @@ def main(_):
                 curQuestion = question
                 writer.write(question["questionid"] + " " + question["questiontext"] + "\n")
                 atAnswerCandidateIdx = 0
-                curQuestionScores = [0]*4
+                curQuestionScores = []
 
         outputLine = ""
         for j in range(probabilities.shape[0]):
@@ -1192,10 +1198,9 @@ def main(_):
 
         # Store scores for this question
         print(num_written_lines)
+        assert len(curQuestionScores) == atAnswerCandidateIdx
+        curQuestionScores.append(probabilities[1])
         print(curQuestionScores)
-
-
-        curQuestionScores[atAnswerCandidateIdx] = probabilities[1]
 
         # Write output line
         writer.write(outputLine)
@@ -1222,6 +1227,10 @@ def main(_):
       writer.write("numQuestions: " + str(numQuestions) + "\n")
       writer.write("numQuestionsCorrect: " + str(numQuestionsCorrect) + "\n")
       writer.write("Proportion: " + str(numQuestionsCorrect / numQuestions) + "\n")
+
+      print("numQuestions: " + str(numQuestions) + "\n")
+      print("numQuestionsCorrect: " + str(numQuestionsCorrect) + "\n")
+      print("Proportion: " + str(numQuestionsCorrect / numQuestions) + "\n")
 
     # Check -- ensure that the number of written lines is the same as the number of elements in the test set.
     assert num_written_lines == num_actual_predict_examples
