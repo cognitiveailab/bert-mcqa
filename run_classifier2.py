@@ -25,6 +25,8 @@ import modeling
 import optimization
 import tokenization
 import tensorflow as tf
+from collections import defaultdict
+from operator import itemgetter
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
@@ -333,6 +335,140 @@ class MrpcProcessor(DataProcessor):
       examples.append(
           InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
     return examples
+
+
+
+class McqaProcessor(DataProcessor):
+  """Processor for the Multiple Choice Question Answering data set (modified from MRPC processor)."""
+
+  def get_train_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        self._read_tsv(os.path.join(data_dir, "train.tsv")), "train")
+
+  def get_dev_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        self._read_tsv(os.path.join(data_dir, "dev.tsv")), "dev")
+
+  def get_test_examples(self, data_dir):
+    """See base class."""
+    return self._create_examples(
+        self._read_tsv(os.path.join(data_dir, "test.tsv")), "test")
+
+  def get_gold_eval(self, data_dir):
+      return self.load_gold_eval(
+          self._read_tsv(os.path.join(data_dir, "test.tsv")) )
+
+  def get_labels(self):
+    """See base class."""
+    return ["0", "1"]           # 0 is incorrect, 1 is correct answer choice
+
+
+  def _create_examples(self, lines, set_type):
+    """Creates examples for the training and dev sets."""
+    examples = []
+    for (i, line) in enumerate(lines):
+      if i == 0:            # Ignore header
+        continue
+      guid = "%s-%s" % (set_type, i)
+
+      # Label (0 for correct, 1 for incorrect)
+      strLabel = line[0]
+
+      # Question ID, Answer Choice
+      questionID = line[1]
+      answerChoiceIdx = line[2]
+
+      # QC Label text, question text, answer candidate text
+      strQCLabel = line[3]
+      strQuestionText = line[4]
+      strAnswerCandidateText = line[5]
+
+      # For TEXT_A, append question classification label and question text
+      text_a = tokenization.convert_to_unicode(strQCLabel + " " + strQuestionText)
+      # For TEXT_B, use answer candidate
+      text_b = tokenization.convert_to_unicode(strAnswerCandidateText)
+
+      #print("Text_A: " + str(text_a))
+      #print("Text_b: " + str(text_b))
+
+      # Label (correct or incorrect)
+      if set_type == "test":
+        label = "0"                 # PJ note: not sure why this is necessary
+      else:
+        label = tokenization.convert_to_unicode(strLabel)
+
+
+      # Store in 'examples' storage class
+      examples.append(
+          InputExample(guid=guid, text_a=text_a, text_b=text_b, label=label))
+
+
+    return examples
+
+
+  def load_gold_eval(self, lines):
+    """Creates examples for the training and dev sets."""
+    out = []
+
+    question = defaultdict(lambda:"")
+    for (i, line) in enumerate(lines):
+      if i == 0:            # Ignore header
+        continue
+      #guid = "%s-%s" % (set_type, i)
+
+      # Label (0 for correct, 1 for incorrect)
+      strLabel = line[0]
+
+      # Question ID, Answer Choice
+      questionID = line[1]
+      answerChoiceIdx = line[2]
+
+      # QC Label text, question text, answer candidate text
+      strQCLabel = line[3]
+      strQuestionText = line[4]
+      strAnswerCandidateText = line[5]
+
+      # For TEXT_A, append question classification label and question text
+      text_a = tokenization.convert_to_unicode(strQCLabel + " " + strQuestionText)
+      # For TEXT_B, use answer candidate
+      text_b = tokenization.convert_to_unicode(strAnswerCandidateText)
+
+      #print("Text_A: " + str(text_a))
+      #print("Text_b: " + str(text_b))
+
+
+      # Label (correct or incorrect)
+      #if set_type == "test":
+      #  label = "0"                 # PJ note: not sure why this is necessary
+      #else:
+      #  label = tokenization.convert_to_unicode(strLabel)
+      label = strLabel
+
+      if (question["questionid"] != questionID):
+          # new question, push old question
+          if (question["questionid"] != ""):
+              out.append(question)
+          # Clear
+          question = defaultdict(lambda: "")
+          question["startline"] = i-1
+
+
+      # Populate fields in question structure
+      question["questionid"] = questionID
+      question["questiontext"] = strQuestionText
+      question["AC" + answerChoiceIdx] = strAnswerCandidateText
+      if (label == "1"):
+        question["correctAnswerIdx"] = answerChoiceIdx
+      question["numChoices"] = max(answerChoiceIdx, question["numChoices"])
+
+    # Add final question at the end of the list
+    out.append(question)
+
+    return out
+
+
 
 
 class ColaProcessor(DataProcessor):
@@ -790,6 +926,7 @@ def main(_):
       "mnli": MnliProcessor,
       "mrpc": MrpcProcessor,
       "xnli": XnliProcessor,
+      "mcqa": McqaProcessor,
   }
 
   tokenization.validate_case_matches_checkpoint(FLAGS.do_lower_case,
@@ -840,6 +977,10 @@ def main(_):
   train_examples = None
   num_train_steps = None
   num_warmup_steps = None
+
+  #
+  # Training procedure
+  #
   if FLAGS.do_train:
     train_examples = processor.get_train_examples(FLAGS.data_dir)
     num_train_steps = int(
@@ -881,6 +1022,11 @@ def main(_):
         drop_remainder=True)
     estimator.train(input_fn=train_input_fn, max_steps=num_train_steps)
 
+
+
+  #
+  # Evaluation Procedure
+  #
   if FLAGS.do_eval:
     eval_examples = processor.get_dev_examples(FLAGS.data_dir)
     num_actual_eval_examples = len(eval_examples)
@@ -927,9 +1073,29 @@ def main(_):
         tf.logging.info("  %s = %s", key, str(result[key]))
         writer.write("%s = %s\n" % (key, str(result[key])))
 
+
+
+
+  #
+  # Test procedure
+  #
   if FLAGS.do_predict:
+
+    # Load test data
     predict_examples = processor.get_test_examples(FLAGS.data_dir)
+    # Get number of elements in the test data
     num_actual_predict_examples = len(predict_examples)
+
+    # Load gold information about questions
+    goldQuestions = processor.get_gold_eval(FLAGS.data_dir)
+
+
+    ### debug
+    #print ("Predict examples: ")
+    #print(predict_examples)
+
+
+    ## TPU specific
     if FLAGS.use_tpu:
       # TPU requires a fixed batch size for all batches, therefore the number
       # of examples must be a multiple of the batch size, or else examples
@@ -938,17 +1104,24 @@ def main(_):
       while len(predict_examples) % FLAGS.predict_batch_size != 0:
         predict_examples.append(PaddingInputExample())
 
+
+    # Convert test data to features
     predict_file = os.path.join(FLAGS.output_dir, "predict.tf_record")
     file_based_convert_examples_to_features(predict_examples, label_list,
                                             FLAGS.max_seq_length, tokenizer,
                                             predict_file)
+    #
+    # Run the prediction
+    #
 
+    # Logging
     tf.logging.info("***** Running prediction*****")
     tf.logging.info("  Num examples = %d (%d actual, %d padding)",
                     len(predict_examples), num_actual_predict_examples,
                     len(predict_examples) - num_actual_predict_examples)
     tf.logging.info("  Batch size = %d", FLAGS.predict_batch_size)
 
+    # Perform prediction
     predict_drop_remainder = True if FLAGS.use_tpu else False
     predict_input_fn = file_based_input_fn_builder(
         input_file=predict_file,
@@ -958,19 +1131,99 @@ def main(_):
 
     result = estimator.predict(input_fn=predict_input_fn)
 
+    # Step N: Output prediction results file (raw probabilities)
+    # Open file
     output_predict_file = os.path.join(FLAGS.output_dir, "test_results.tsv")
     with tf.gfile.GFile(output_predict_file, "w") as writer:
       num_written_lines = 0
       tf.logging.info("***** Predict results *****")
+
+      # For every element in the test set
+      atAnswerCandidateIdx = 0
+      curQuestion = defaultdict(lambda: "")
+      curQuestionScores = []
+
+      numQuestions = 0
+      numQuestionsCorrect = 0
+
       for (i, prediction) in enumerate(result):
+        # Retrieve the predicted class probabilities
         probabilities = prediction["probabilities"]
+        # (Don't entirely understand this) Check if the element index is valid relative to the total number of test elements there should be
         if i >= num_actual_predict_examples:
           break
-        output_line = "\t".join(
-            str(class_probability)
-            for class_probability in probabilities) + "\n"
-        writer.write(output_line)
+
+        # Assemble output line
+        #output_line = "\t".join(str(class_probability) for class_probability in probabilities) + "\n"
+
+
+        for question in goldQuestions:
+            if (question["startline"] == num_written_lines):
+                # Save scores for last question
+                if (len(curQuestionScores) > 0):
+                    # score
+                    (sortedIndices, sortedScores) = zip(*sorted(enumerate(curQuestionScores), key=itemgetter(1), reverse=True))
+                    writer.write("sortedIndices: " + str(sortedIndices) + "\n")
+                    writer.write("correctAnswerIdx: " + str(curQuestion["correctAnswerIdx"]) + "  ")
+                    if (str(sortedIndices[0]) == str(curQuestion["correctAnswerIdx"])):
+                        numQuestionsCorrect += 1
+                        writer.write("CORRECT" + "\n")
+                    else:
+                        writer.write("INCORRECT" + "\n")
+
+                    numQuestions += 1
+
+
+                # Clear for new question
+                curQuestion = question
+                writer.write(question["questionid"] + " " + question["questiontext"] + "\n")
+                atAnswerCandidateIdx = 0
+                curQuestionScores = [0]*4
+
+        outputLine = ""
+        for j in range(probabilities.shape[0]):
+            outputLine += str(j) + ":" + str(probabilities[j]) + "\t"
+
+        if (str(atAnswerCandidateIdx) == curQuestion["correctAnswerIdx"]):
+            outputLine += "**CORRECT LABEL** "
+
+        outputLine += curQuestion["AC" + str(atAnswerCandidateIdx)]
+        outputLine += "\n"
+
+        # Store scores for this question
+        print(num_written_lines)
+        print(curQuestionScores)
+
+
+        curQuestionScores[atAnswerCandidateIdx] = probabilities[1]
+
+        # Write output line
+        writer.write(outputLine)
+        # Note the number of lines we've written
         num_written_lines += 1
+
+        atAnswerCandidateIdx += 1
+
+      # End -- score last question
+      # score
+      (sortedIndices, sortedScores) = zip(*sorted(enumerate(curQuestionScores), key=itemgetter(1), reverse=True))
+      writer.write("sortedIndices: " + str(sortedIndices) + "\n")
+      writer.write("correctAnswerIdx: " + str(curQuestion["correctAnswerIdx"]) + "  ")
+      if (sortedIndices[0] == int(curQuestion["correctAnswerIdx"])):
+          numQuestionsCorrect += 1
+          writer.write("CORRECT" + "\n")
+      else:
+          writer.write("INCORRECT" + "\n")
+
+      numQuestions += 1
+
+
+      # Write summary
+      writer.write("numQuestions: " + str(numQuestions) + "\n")
+      writer.write("numQuestionsCorrect: " + str(numQuestionsCorrect) + "\n")
+      writer.write("Proportion: " + str(numQuestionsCorrect / numQuestions) + "\n")
+
+    # Check -- ensure that the number of written lines is the same as the number of elements in the test set.
     assert num_written_lines == num_actual_predict_examples
 
 
