@@ -7,10 +7,7 @@
 # run_mcqa_cased_experiment 3 /data/ARCQC/ QC-ARC-All-Train.harish.bert.L6.tsv QC-ARC-All-Dev.harish.bertL6.tsv QC-ARC-All-Test.harish.bertL6.tsv /data/bertoutL6/
 
 
-#run_mcqa_cased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.NOLABEL.tsv QC-ARC-All-Dev.harish.bert.NOLABEL.tsv QC-ARC-All-Test.harish.bert.NOLABEL.tsv /data/bertout_cased_NOLABEL/
-
-#run_mcqa_uncased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.NOLABEL.tsv QC-ARC-All-Dev.harish.bert.NOLABEL.tsv QC-ARC-All-Test.harish.bert.NOLABEL.tsv /data/bertout_uncased_NOLABEL/
-#run_mcqa_uncased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.tsv /data/bertout_uncased_LDEF3I0D2/
+#run_mcqa_cased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.NOLABEL.tsv QC-ARC-All-Dev.harish.bert.NOLABEL.tsv QC-ARC-All-Test.harish.bert.NOLABEL.tsv /data/bertout_uncased_NOLABEL/
 
 
 NUM_RUNS="$1"
@@ -28,8 +25,8 @@ echo numRuns: $NUM_RUNS
 for (( counter=1; counter<=$NUM_RUNS; counter++ )) do
     echo Starting run $counter .        
 
-    export BERT_BASE_DIR=/data/bert/cased_L-12_H-768_A-12
-    #export BERT_BASE_DIR=/data/bert/uncased_L-12_H-768_A-12
+    #export BERT_BASE_DIR=/data/bert/cased_L-12_H-768_A-12
+    export BERT_BASE_DIR=/data/bert/uncased_L-12_H-768_A-12
     #export BERT_BASE_DIR=/data/bert/uncased_L-24_H-1024_A-16
     #export GLUE_DIR=/data/glue/glue_data
     ##export MCQA_DIR=/data/ARCQC/
@@ -52,7 +49,7 @@ for (( counter=1; counter<=$NUM_RUNS; counter++ )) do
         --task_name=MCQA \
         --do_train=true \
         --do_eval=true \
-        --do_lower_case=False \
+        --do_lower_case=True \
         --data_dir=$MCQA_DIR \
         --vocab_file=$BERT_BASE_DIR/vocab.txt \
         --bert_config_file=$BERT_BASE_DIR/bert_config.json \
@@ -67,7 +64,7 @@ for (( counter=1; counter<=$NUM_RUNS; counter++ )) do
     python run_classifier2.py \
         --task_name=MCQA \
         --do_predict=true \
-        --do_lower_case=False \
+        --do_lower_case=True \
         --data_dir=$MCQA_DIR \
         --vocab_file=$BERT_BASE_DIR/vocab.txt \
         --bert_config_file=$BERT_BASE_DIR/bert_config.json \
@@ -79,7 +76,7 @@ for (( counter=1; counter<=$NUM_RUNS; counter++ )) do
     python run_classifier2.py \
         --task_name=MCQA \
         --do_predict=true \
-        --do_lower_case=False \
+        --do_lower_case=True \
         --data_dir=$MCQA_DIR \
         --vocab_file=$BERT_BASE_DIR/vocab.txt \
         --bert_config_file=$BERT_BASE_DIR/bert_config.json \
