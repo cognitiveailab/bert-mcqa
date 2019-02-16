@@ -1,0 +1,34 @@
+#!/bin/bash
+
+#./run_mcqa_uncased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.NOLABEL.tsv QC-ARC-All-Dev.harish.bert.NOLABEL.tsv QC-ARC-All-Test.harish.bert.NOLABEL.tsv /data/bertout_uncased_NOLABEL/
+
+# Sample run
+#./run_mcqa_uncased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF3I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+#./run_mcqa_uncased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF3I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+# Do full run
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF3I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF3I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF3I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF4I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF4I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF4I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF4I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF5I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF5I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF5I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF5I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF6I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF6I0D2-PREDTRAIN-PREDTEST-LIROTH/
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF7I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF7I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF7I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF7I0D2-PREDLABELS-LIROTH/
+
+#./run_mcqa_uncased_experiment 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF8I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF8I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF8I0D2.PREDLABELS-LIROTH.tsv /data/bertout_uncased_LDEF8I0D2-PREDLABELS-LIROTH/
+
+
+./run_mcqa_cased_largehpc $1 /extra/pajansen/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.tsv /extra/pajansen/out/bertout_large_LDEF3I0D2/
+
+./run_mcqa_cased_largehpc $1 /extra/pajansen/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv /extra/pajansen/out/bertout_large_LDEF3I0D2-PREDLIROTH-TR-TST
+
+./run_mcqa_cased_largehpc_onlypredict $1 /extra/pajansen/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-LIROTH.tsv /extra/pajansen/out/bertout_large_LDEF3I0D2/
+
