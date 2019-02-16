@@ -1195,6 +1195,8 @@ def main(_):
                         writer.write("INCORRECT" + "\n")
 
                     numQuestions += 1
+                    print(num_written_lines)
+                    print(curQuestionScores)
 
 
                 # Clear for new question
@@ -1214,10 +1216,10 @@ def main(_):
         outputLine += "\n"
 
         # Store scores for this question
-        print(num_written_lines)
+        #print(num_written_lines)
         assert len(curQuestionScores) == atAnswerCandidateIdx
         curQuestionScores.append(probabilities[1])
-        print(curQuestionScores)
+        #print(curQuestionScores)
 
         # Write output line
         writer.write(outputLine)
