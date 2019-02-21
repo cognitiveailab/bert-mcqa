@@ -1,0 +1,21 @@
+#!/bin/bash
+
+#./run_mcqa_uncased_experiment 5 /data/ARCQC/ QC-ARC-All-Train.harish.bert.NOLABEL.tsv QC-ARC-All-Dev.harish.bert.NOLABEL.tsv QC-ARC-All-Test.harish.bert.NOLABEL.tsv /data/bertout_uncased_NOLABEL/
+
+./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF1I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF1I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF1I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF1I0D2/
+
+./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF2I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF2I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF2I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF2I0D2/
+
+./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF3I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF3I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF3I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF3I0D2/
+
+./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF4I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF4I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF4I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF4I0D2/
+
+./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF5I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF5I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF5I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF5I0D2/
+
+./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF6I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF6I0D2/
+
+#./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF7I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF7I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF7I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF7I0D2/
+
+#./run_mcqa_uncased_reevalpred-df 10 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF8I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF8I0D2.PREDLABELS-DFBERT.tsv QC-ARC-All-Test.harish.bert.LDEF8I0D2.PREDLABELS-DFBERT.tsv /data/bertout_uncased_LDEF8I0D2/
+
+
