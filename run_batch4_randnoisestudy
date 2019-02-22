@@ -1,0 +1,135 @@
+#!/bin/bash
+
+#--- Runs 1-10
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-1/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-2/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-3.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-3/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-4.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-4/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-5.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-5/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-6.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-6/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-7.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-7/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-8.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-8/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-9.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-9/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-10.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-10/
+
+
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-1/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-2/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-3.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-3/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-4.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-4/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-5.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-5/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-6.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-6/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-7.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-7/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-8.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-8/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-9.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-9/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-10.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-10/
+
+
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-1/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-2/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-3.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-3/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-4.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-4/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-5.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-5/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-6.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-6/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-7.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-7/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-8.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-8/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-9.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-9/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-10.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-10/
+
+
+#--- Runs 11-20
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-11.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-11/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-12.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-12/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-13.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-13/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-14.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-14/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-15.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-15/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-16.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-16/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-17.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-17/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-18.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-18/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-19.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-19/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-20.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.05-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.05-20/
+
+
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-11.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-11/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-12.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-12/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-13.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-13/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-14.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-14/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-15.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-15/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-16.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-16/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-17.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-17/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-18.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-18/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-19.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-19/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-20.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.10-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.10-20/
+
+
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-11.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-11/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-12.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-12/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-13.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-13/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-14.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-14/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-15.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-15/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-16.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-16/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-17.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-17/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-18.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-18/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-19.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-19/
+
+./run_mcqa_uncased_experiment 1 /data/ARCQC/ QC-ARC-All-Train.harish.bert.LDEF6I0D2.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-20.tsv QC-ARC-All-Dev.harish.bert.LDEF6I0D8.RANDNOISE0.20-1.tsv /data1/noisestudy/bertout_uncased_LDEF6I0D2-RANDNOISE0.20-20/
+
